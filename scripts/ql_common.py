@@ -753,7 +753,7 @@ def plotMapDataContinuous_cartopy(lat, lon, data, data_mask, pngName,
     doScatterPlot = plot_style_options['scatterPlot']
     plot_global   = plot_style_options['global']
     pointSize     = plot_style_options['pointSize']
-    font_scale    = plot_style_options['font_scale']
+    # font_scale    = plot_style_options['font_scale']
     # log_plot      = plot_style_options['log_plot']
     dpi           = plot_style_options['dpi']
 
@@ -993,7 +993,7 @@ def plotMapDataContinuous(lat, lon, data, data_mask, pngName,
     cmap          = plot_style_options['cmap']
     doScatterPlot = plot_style_options['scatterPlot']
     pointSize     = plot_style_options['pointSize']
-    font_scale    = plot_style_options['font_scale']
+    # font_scale    = plot_style_options['font_scale']
     log_plot      = plot_style_options['log_plot']
     dpi           = plot_style_options['dpi']
 
@@ -1288,7 +1288,7 @@ def plotMapDataDiscrete(lat, lon, data, data_mask, pngName,
     cmap          = plot_style_options['cmap']
     doScatterPlot = plot_style_options['scatterPlot']
     pointSize     = plot_style_options['pointSize']
-    font_scale    = plot_style_options['font_scale']
+    # font_scale    = plot_style_options['font_scale']
     log_plot      = plot_style_options['log_plot']
     dpi           = plot_style_options['dpi']
 
@@ -2233,7 +2233,7 @@ def set_plot_styles(dfile_obj, dset, dataset_options, options):
     plot_style_options['scatterPlot'] = options.doScatterPlot
     plot_style_options['global'] = options.plot_global
     plot_style_options['pointSize'] = options.pointSize
-    plot_style_options['font_scale'] = options.font_scale
+    # plot_style_options['font_scale'] = options.font_scale
     plot_style_options['proj'] = options.proj
     plot_style_options['dpi'] = options.dpi
 

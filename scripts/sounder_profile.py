@@ -50,25 +50,18 @@ Copyright (c) 2014 University of Wisconsin Regents. All rights reserved.
     along with this program.  If not, see <http://www.gnu.org/licenses/>.
 """
 
-file_Date = '$Date: 2015-02-11 22:59:24 -0800 (Wed, 11 Feb 2015) $'
-file_Revision = '$Revision: 2354 $'
-file_Author = '$Author: geoffc $'
-file_HeadURL = '$HeadURL: https://svn.ssec.wisc.edu/repos/jpss_adl/trunk/scripts/iapp/quicklooks/sounder_skewt.py $'
-file_Id = '$Id: sounder_skewt.py 2354 2015-02-12 06:59:24Z geoffc $'
-
-__author__ = 'Geoff Cureton <geoff.cureton@ssec.wisc.edu>'
-__version__ = '$Id: sounder_skewt.py 2354 2015-02-12 06:59:24Z geoffc $'
-__docformat__ = 'Epytext'
-
-import os, sys, logging, traceback
-from os import path,uname,environ
+import os, 
+import sys
+import logging
+import traceback
+from os import path, uname, environ
 import string
 import re
 import uuid
-from shutil import rmtree,copyfile
+from shutil import rmtree, copyfile
 from glob import glob
 from time import time
-from datetime import datetime,timedelta
+from datetime import datetime, timedelta
 
 import numpy as np
 from numpy import ma
@@ -80,9 +73,6 @@ import matplotlib
 import matplotlib.cm as cm
 from matplotlib.colors import ListedColormap
 from matplotlib.figure import Figure
-
-matplotlib.use('Agg')
-from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
 
 # This must come *after* the backend is specified.
 import matplotlib.pyplot as ppl
@@ -124,25 +114,6 @@ def uwyoming():
 
     for key in sounding_keys:
         sounding_inputs[key] = sounding[key]
-
-    #sounding.plot_skewt(color='r',lw=2)
-    #ppl.show(block=False)
-
-    #sounding.make_skewt_axes()
-    #sounding.add_profile(color='r',lw=2)
-    #sounding.lift_parcel(1004.,17.4,8.6)
-    #ppl.draw()
-    #ppl.show(block=False)
-
-    #sounding.make_skewt_axes()
-    #sounding.add_profile(color='r',lw=2)
-    #parcel=sounding.surface_parcel(mixdepth=100.)
-    #sounding.lift_parcel(*parcel)
-    #ppl.draw()
-    #ppl.show(block=False)
-
-    #sounding.plot_skewt(color='r',lw=2)
-    #ppl.show(block=False)
 
     return sounding_inputs
 

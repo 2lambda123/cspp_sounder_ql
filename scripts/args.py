@@ -23,6 +23,7 @@ from utils import check_and_convert_path, create_dir
 
 LOG = logging.getLogger(__name__)
 
+
 def argument_parser_common():
     '''
     Common options for command line applications.
@@ -49,12 +50,14 @@ def argument_parser_common():
     help_strings = {}
     help_strings['work_dir'] = """Work directory which all activity will occur in, defaults to""" \
         """ current directory."""
-    help_strings['debug'] = """Always retain intermediate files. [default: %(default)s]"""
+    help_strings[
+        'debug'] = """Always retain intermediate files. [default: %(default)s]"""
     help_strings['verbosity'] = """Each occurrence increases verbosity one level from the""" \
         """ default, where the\nlevels are [ERROR, WARNING, INFO, DEBUG].  [default: INFO]"""
     help_strings['version'] = """Print the CSPP Sounder QL package version"""
     help_strings['help'] = """Show this help message and exit"""
-    help_strings['expert'] = """Display all help options, including the expert ones."""
+    help_strings[
+        'expert'] = """Display all help options, including the expert ones."""
 
     # Construct the dictionaries containing the parser options.
 
@@ -94,10 +97,7 @@ def argument_parser_common():
     }
 
     parser_lists['help'] = ["-h", "--help"]
-    parser_dicts['help'] = {
-        'action': "help",
-        'help': help_strings['help']
-    }
+    parser_dicts['help'] = {'action': "help", 'help': help_strings['help']}
 
     parser_lists['expert'] = ['-x', '--expert']
     parser_dicts['expert'] = {
@@ -109,6 +109,7 @@ def argument_parser_common():
 
     return parser_lists, parser_dicts, flags
 
+
 def argument_parser_image():
     '''
     geocat specific options.
@@ -118,65 +119,67 @@ def argument_parser_image():
     common_parser_lists, common_parser_dicts, flags = argument_parser_common()
 
     dataChoices = OrderedDict([
-            ('iapp', 'International TOVS Processing Package (IAPP)'),
-            ('mirs', 'Microwave Integrated Retrieval System (MiRS)'),
-            ('hsrtv', 'Hyperspectral Retrieval Software (HSRTV)'),
-            ('heap', 'Hyper-Spectral Enterprise Algorithm Package (HEAP NUCAPS)'),
-            ('nucaps', 'NOAA Unique Combined Atmospheric Processing System (NUCAPS)')
-            ])
-    prodChoices=['temp', 'wvap', 'dwpt','relh']
+        ('iapp', 'International TOVS Processing Package (IAPP)'),
+        ('mirs', 'Microwave Integrated Retrieval System (MiRS)'),
+        ('hsrtv', 'Hyperspectral Retrieval Software (HSRTV)'),
+        ('heap', 'Hyper-Spectral Enterprise Algorithm Package (HEAP NUCAPS)'),
+        ('nucaps',
+         'NOAA Unique Combined Atmospheric Processing System (NUCAPS)')
+    ])
+
+    prodChoices = ['temp', 'wvap', 'dwpt', 'relh']
     # prodChoices=['temp','temp_gdas','wvap','wvap_gdas','dwpt','relh','relh_gdas']
-                 # 'ctp','ctt']
-                 # 'ctp','ctt','2temp','cold_air_aloft']
-    map_res_choice = ['c','l','i']
+    # 'ctp','ctt']
+    # 'ctp','ctt','2temp','cold_air_aloft']
+    map_res_choice = ['c', 'l', 'i']
     plot_type_choice = ['image']
     # plot_type_choice = ['image','slice']
     map_proj_choice = {
-            'eckiv':   'Eckert IV Equal Area',
-            'lcc':     'Lambert Conformal',
-            'ortho':   'Orthographic',
-            'geos':    'Geostationary',
-            'npstere': 'North-Polar Stereographic',
-            'spstere': 'South-Polar Stereographic',
-            'plat':    'Plate Carree',
-            'sinu':    'Sinusoidal',
-            'moll':    'Mollweide'
-            }
+        'eckiv': 'Eckert IV Equal Area',
+        'lcc': 'Lambert Conformal',
+        'ortho': 'Orthographic',
+        'geos': 'Geostationary',
+        'npstere': 'North-Polar Stereographic',
+        'spstere': 'South-Polar Stereographic',
+        'plat': 'Plate Carree',
+        'sinu': 'Sinusoidal',
+        'moll': 'Mollweide'
+    }
 
     defaults = {
-            'datatype':None,
-            'dataset':'temp',
-            'stride':1,
-            'pressure':800.,
-            # 'elevation':None,
-            'plotMin'  : None,
-            'plotMax'  : None,
-            'dpi':200,
-            'lat_0':None,
-            'lon_0':None,
-            # 'yMin'  : None,
-            # 'yMax'  : None,
-            'bounding_lat':0.,
-            'image_size' : [7.5, 7.5],
-            'map_axis' : [0.05, 0.15, 0.90, 0.75 ],
-            'cbar_axis' : [0.10 , 0.05, 0.8 , 0.05],
-            'scatter_plot':False,
-            'global':False,
-            'pointSize':1,
-            'font_scale':1.,
-            'cmap':None,
-            'plot_type'  : 'image',
-            # 'scale':1,
-            'map_res':'c',
-            'proj':'lcc',
-            'outputFilePrefix' : None,
-            'llcrnrx':None,
-            'llcrnry':None,
-            'urcrnrx':None,
-            'urcrnry':None,
-            'output_file':None,
-            'unnavigated':False
-            }
+        'datatype': None,
+        'dataset': 'temp',
+        'stride': 1,
+        'pressure': 800.,
+        # 'elevation':None,
+        'plotMin': None,
+        'plotMax': None,
+        'dpi': 200,
+        'lat_0': None,
+        'lon_0': None,
+        # 'yMin'  : None,
+        # 'yMax'  : None,
+        'bounding_lat': 0.,
+        'image_size': [7.5, 7.5],
+        'map_axis': [0.05, 0.15, 0.90, 0.75],
+        'cbar_axis': [0.10, 0.05, 0.8, 0.05],
+        'scatter_plot': False,
+        'global': False,
+        'pointSize': 1,
+        # 'font_scale': 1.,
+        'cmap': None,
+        'plot_type': 'image',
+        # 'scale':1,
+        'map_res': 'c',
+        'proj': 'lcc',
+        'outputFilePrefix': None,
+        'llcrnrx': None,
+        'llcrnry': None,
+        'urcrnrx': None,
+        'urcrnry': None,
+        'output_file': None,
+        'unnavigated': False
+    }
 
     help_strings = {}
     help_strings['inputs'] = """One or more input files or directories."""
@@ -192,11 +195,13 @@ def argument_parser_image():
             """[default: {}]""".format(defaults["stride"])
     help_strings['pressure'] = """The pressure level (in mbar) to plot [default: {}]. """ \
             """""".format(defaults["pressure"])
-            # """Mutually exclusive with --elevation.""".format(defaults["pressure"])
+    # """Mutually exclusive with --elevation.""".format(defaults["pressure"])
     # help_strings['elevation'] = """The elevation level (in feet) to plot [default: {}]. """ \
-            # """Mutually exclusive with --pressure.""".format(defaults["elevation"])
-    help_strings['plotMin'] = "Minimum value to plot.".format(defaults["plotMin"])
-    help_strings['plotMax'] = "Maximum value to plot.".format(defaults["plotMax"])
+    # """Mutually exclusive with --pressure.""".format(defaults["elevation"])
+    help_strings['plotMin'] = "Minimum value to plot.".format(
+        defaults["plotMin"])
+    help_strings['plotMax'] = "Maximum value to plot.".format(
+        defaults["plotMax"])
     help_strings['dpi'] = """The resolution in dots per inch of the output png file. """ \
             """[default: {}]""".format(defaults["dpi"])
     help_strings['lat_0'] = "Center latitude of plot projection."
@@ -217,28 +222,36 @@ def argument_parser_image():
     help_strings['cbar_axis'] = """Set the colorbar axes at position """ \
             """[*left*, *bottom*, *width*, *height*] where all\nquantities are in fractions of """ \
             """figure width and height. [default: '{}']""".format(defaults["cbar_axis"])
-    help_strings['scatter_plot'] = "Generate the plot using a scatterplot approach."
+    help_strings[
+        'scatter_plot'] = "Generate the plot using a scatterplot approach."
     help_strings['global'] = "Plot the maximum extent of the desired projection, rather than just """ \
             """the extent\nof the data. [default: '{}']""".format(defaults["global"])
     # help_strings['logscale'] = """Plot the dataset using a logarithmic scale."""
     # help_strings['no_logscale'] = """Plot the dataset using a linear scale."""
     help_strings['pointSize'] = """Size of the plot point used to represent each pixel. """ \
             """[default: {}]""".format(defaults["pointSize"])
-    help_strings['font_scale'] = """The scale factor to apply to the default font size for the""" \
-            """ plot labels. [default: {}]""".format(defaults["font_scale"])
-    help_strings['cmap'] = """The matplotlib colormap to use. [default: '{}']""".format(defaults["cmap"])
-    help_strings['plot_type'] = """The type of plot. Possible values are {}.""".format(
+    # help_strings['font_scale'] = """The scale factor to apply to the default font size for the""" \
+    # """ plot labels. [default: {}]""".format(defaults["font_scale"])
+    help_strings[
+        'cmap'] = """The matplotlib colormap to use. [default: '{}']""".format(
+            defaults["cmap"])
+    help_strings[
+        'plot_type'] = """The type of plot. Possible values are {}.""".format(
             plot_type_choice.__str__()[1:-1])
-    help_strings['plot_title'] = """The plot title. Must be placed in double quotes."""
-    help_strings['cbar_title'] = """The colorbar title. Must be placed in double quotes."""
+    help_strings[
+        'plot_title'] = """The plot title. Must be placed in double quotes."""
+    help_strings[
+        'cbar_title'] = """The colorbar title. Must be placed in double quotes."""
     # help_strings['scale'] = """The scaling factor for the default viewport size of (w x h) = """ \
-            # """(4200000.0 x 4500000.0)\nmeters. [default: {}]""".format(defaults["scale"])
+    # """(4200000.0 x 4500000.0)\nmeters. [default: {}]""".format(defaults["scale"])
     help_strings['map_res'] = """The map coastline resolution. Possible values are 'c' (coarse), """ \
             """'l' (low) and\n'i' (intermediate). [default: '{}']""".format(defaults["map_res"])
-    help_strings['proj'] = """The map projection. Possible values are:\n {}[default: '{}']""".format(
-            "".join(["\t'{0:8s} ({1}),\n".format(tups[0]+"'",tups[1]) for
-                tups in zip(map_proj_choice.keys(),map_proj_choice.values())]),
-            defaults["proj"])
+    help_strings[
+        'proj'] = """The map projection. Possible values are:\n {}[default: '{}']""".format(
+            "".join([
+                "\t'{0:8s} ({1}),\n".format(tups[0] + "'", tups[1]) for tups in
+                zip(map_proj_choice.keys(), map_proj_choice.values())
+            ]), defaults["proj"])
 
     help_strings['output_file'] = """The filename of the output png file.
                       """
@@ -293,7 +306,7 @@ def argument_parser_image():
         'help': help_strings['plot_type']
     }
 
-    parser_lists['stride'] = ['-S','--stride']
+    parser_lists['stride'] = ['-S', '--stride']
     parser_dicts['stride'] = {
         'dest': "stride",
         'action': "store",
@@ -313,11 +326,11 @@ def argument_parser_image():
 
     # parser_lists['elevation'] = ['--elevation']
     # parser_dicts['elevation'] = {
-        # 'action': "store",
-        # 'dest': "elevation",
-        # 'default': defaults["elevation"],
-        # 'type': float,
-        # 'help': help_strings['elevation'] if is_expert else argparse.SUPPRESS
+    # 'action': "store",
+    # 'dest': "elevation",
+    # 'default': defaults["elevation"],
+    # 'type': float,
+    # 'help': help_strings['elevation'] if is_expert else argparse.SUPPRESS
     # }
 
     parser_lists['plotMin'] = ['--plot-min']
@@ -365,26 +378,26 @@ def argument_parser_image():
 
     # parser_lists['yMin'] = ['--yMin']
     # parser_dicts['yMin'] = {
-        # 'action': "store",
-        # 'dest': "yMin",
-        # 'type': float,
-        # 'help': help_strings['yMin'] if is_expert else argparse.SUPPRESS
+    # 'action': "store",
+    # 'dest': "yMin",
+    # 'type': float,
+    # 'help': help_strings['yMin'] if is_expert else argparse.SUPPRESS
     # }
 
     # parser_lists['yMax'] = ['--yMax']
     # parser_dicts['yMax'] = {
-        # 'action': "store",
-        # 'dest': "yMax",
-        # 'type': float,
-        # 'help': help_strings['yMax'] if is_expert else argparse.SUPPRESS
+    # 'action': "store",
+    # 'dest': "yMax",
+    # 'type': float,
+    # 'help': help_strings['yMax'] if is_expert else argparse.SUPPRESS
     # }
 
     # parser_lists['footprint'] = ['--footprint']
     # parser_dicts['footprint'] = {
-        # 'action': "store",
-        # 'dest': "footprint",
-        # 'type': int,
-        # 'help': help_strings['footprint'] if is_expert else argparse.SUPPRESS
+    # 'action': "store",
+    # 'dest': "footprint",
+    # 'type': int,
+    # 'help': help_strings['footprint'] if is_expert else argparse.SUPPRESS
     # }
 
     parser_lists['bounding_lat'] = ['--bounding-lat']
@@ -393,7 +406,8 @@ def argument_parser_image():
         'dest': "bounding_lat",
         'default': defaults["bounding_lat"],
         'type': float,
-        'help': help_strings['bounding_lat'] if is_expert else argparse.SUPPRESS
+        'help':
+        help_strings['bounding_lat'] if is_expert else argparse.SUPPRESS
     }
 
     parser_lists['extent'] = ['--extent']
@@ -457,19 +471,19 @@ def argument_parser_image():
 
     # parser_lists['logscale'] = ['--logscale']
     # parser_dicts['logscale'] = {
-        # 'action': "store_true",
-        # 'dest': "logscale",
-        # 'help': help_strings['logscale']
+    # 'action': "store_true",
+    # 'dest': "logscale",
+    # 'help': help_strings['logscale']
     # }
 
     # parser_lists['no_logscale'] = ['--no-logscale']
     # parser_dicts['no_logscale'] = {
-        # 'action': "store_true",
-        # 'dest': "no_logscale",
-        # 'help': help_strings['no_logscale'] if is_expert else argparse.SUPPRESS
+    # 'action': "store_true",
+    # 'dest': "no_logscale",
+    # 'help': help_strings['no_logscale'] if is_expert else argparse.SUPPRESS
     # }
 
-    parser_lists['pointSize'] = ['-P','--pointSize']
+    parser_lists['pointSize'] = ['-P', '--pointSize']
     parser_dicts['pointSize'] = {
         'action': "store",
         'dest': "pointSize",
@@ -478,14 +492,14 @@ def argument_parser_image():
         'help': help_strings['pointSize'] if is_expert else argparse.SUPPRESS
     }
 
-    parser_lists['font_scale'] = ['--font-scale']
-    parser_dicts['font_scale'] = {
-        'action': "store",
-        'dest': "font_scale",
-        'default': defaults["font_scale"],
-        'type': float,
-        'help': help_strings['font_scale'] if is_expert else argparse.SUPPRESS
-    }
+    # parser_lists['font_scale'] = ['--font-scale']
+    # parser_dicts['font_scale'] = {
+    # 'action': "store",
+    # 'dest': "font_scale",
+    # 'default': defaults["font_scale"],
+    # 'type': float,
+    # 'help': help_strings['font_scale'] if is_expert else argparse.SUPPRESS
+    # }
 
     parser_lists['cmap'] = ['--cmap']
     parser_dicts['cmap'] = {
@@ -514,14 +528,14 @@ def argument_parser_image():
 
     # parser_lists['scale'] = ['-s','--scale']
     # parser_dicts['scale'] = {
-        # 'action': "store",
-        # 'dest': "scale",
-        # 'default': defaults["scale"],
-        # 'type': float,
-        # 'help': help_strings['scale'] if is_expert else argparse.SUPPRESS
+    # 'action': "store",
+    # 'dest': "scale",
+    # 'default': defaults["scale"],
+    # 'type': float,
+    # 'help': help_strings['scale'] if is_expert else argparse.SUPPRESS
     # }
 
-    parser_lists['map_res'] = ['-m','--map-res']
+    parser_lists['map_res'] = ['-m', '--map-res']
     parser_dicts['map_res'] = {
         'action': "store",
         'dest': "map_res",
@@ -541,7 +555,7 @@ def argument_parser_image():
         'help': help_strings['proj'] if is_expert else argparse.SUPPRESS
     }
 
-    parser_lists['output_file'] = ['-o','--output-file']
+    parser_lists['output_file'] = ['-o', '--output-file']
     parser_dicts['output_file'] = {
         'action': "store",
         'dest': "output_file",
@@ -550,7 +564,7 @@ def argument_parser_image():
         'help': help_strings['output_file']
     }
 
-    parser_lists['outputFilePrefix'] = ['-O','--output-file-prefix']
+    parser_lists['outputFilePrefix'] = ['-O', '--output-file-prefix']
     parser_dicts['outputFilePrefix'] = {
         'action': "store",
         'dest': "outputFilePrefix",
@@ -562,13 +576,13 @@ def argument_parser_image():
     # Initialise the parser.
     desc = '''Create a plot of temperature, dewpoint or something else at a particular ''' \
             '''pressure level.\nSupports IAPP, MiRS, HSRTV, NUCAPS and HEAP NUCAPS files.'''
-            # '''pressure or elevation level.\nSupports IAPP, MiRS, HSRTV, HEAP and NUCAPS files.'''
+    # '''pressure or elevation level.\nSupports IAPP, MiRS, HSRTV, HEAP and NUCAPS files.'''
     epilog = ''
-    parser = argparse.ArgumentParser(description=desc,
-                                     formatter_class=argparse.RawTextHelpFormatter,
-                                     add_help=False,
-                                     epilog=epilog
-                                     )
+    parser = argparse.ArgumentParser(
+        description=desc,
+        formatter_class=argparse.RawTextHelpFormatter,
+        add_help=False,
+        epilog=epilog)
 
     # Add the quicklook image options...
     image_options = parser_lists.keys()
@@ -578,7 +592,8 @@ def argument_parser_image():
     # Add the common options...
     common_options = common_parser_lists.keys()
     for option in common_options:
-        parser.add_argument(*common_parser_lists[option], **common_parser_dicts[option])
+        parser.add_argument(*common_parser_lists[option],
+                            **common_parser_dicts[option])
 
     # Parse the options lists
     args = parser.parse_args()
@@ -603,8 +618,7 @@ def argument_parser_image():
 
     #docleanup = True
     #if args.debug is True:
-        #docleanup = False
-
+    #docleanup = False
 
     return args, work_dir
 
@@ -616,6 +630,7 @@ def argument_parser_skewt():
 
     # Get the common options...
     common_parser_lists, common_parser_dicts, flags = argument_parser_common()
+
 
 def argument_parser_slice():
     '''

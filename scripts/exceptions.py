@@ -10,8 +10,10 @@ Copyright (c) 2020 University of Wisconsin Regents.
 Licensed under GNU GPLv3.
 """
 
+
 class UnsupportedInputType(RuntimeError):
-    '''To catch unsupported input files'''
+    """To catch unsupported input files"""
+
     def __init__(self, msg):
         self.msg = msg
 

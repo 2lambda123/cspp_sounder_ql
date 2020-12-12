@@ -27,160 +27,159 @@ from matplotlib import cm as cm
 
 class Dataset_Options:
     """
-    This class contains static data for the interpretation of the various  
+    This class contains static data for the interpretation of the various
     sounder discrete and continuous datasets.
     """
 
     data = {}
 
     data['cold_air_aloft'] = {
-                'name':'Cold Air Aloft',
-                'quantity': 'cold air aloft',
-                'level':True,
-                'discrete':True,
-                'values':(0,1,2),
-                'mask_values':[],
-                'units': "$^{\circ}$C",
-                'fill_boundaries':[-0.5,0.5,1.5,2.5],
-                'fill_colours':['#9800CB','#66CCFF','#B1B1B1'],
-                'tick_names':['< -65','-65 to -60','> -60'],
-                'cmap':None,
-                'meridian_color':'black',
-                'coastline_color':'black',
-                'country_color':'black'
-                }
+        'name': 'Cold Air Aloft',
+        'quantity': 'cold air aloft',
+        'level': True,
+        'discrete': True,
+        'values': (0, 1, 2),
+        'mask_values': [],
+        'units': "$^{\circ}$C",
+        'fill_boundaries': [-0.5, 0.5, 1.5, 2.5],
+        'fill_colours': ['#9800CB', '#66CCFF', '#B1B1B1'],
+        'tick_names': ['< -65', '-65 to -60', '> -60'],
+        'cmap': None,
+        'meridian_color': 'black',
+        'coastline_color': 'black',
+        'country_color': 'black'
+    }
 
     data['temp'] = {
-                'name':'temperature',
-                'quantity':'temperature',
-                'level':True,
-                'discrete':False,
-                'values':[200., 280.],
-                'mask_ranges':[0.,173.16],
-                'logscale':False,
-                'units': 'K',
-                'coastline_color':'cyan',
-                'country_color':'magenta',
-                'meridian_color':'yellow',
-                'cmap':cm.jet,
-                'n_levels':256
-                }
+        'name': 'temperature',
+        'quantity': 'temperature',
+        'level': True,
+        'discrete': False,
+        'values': [200., 280.],
+        'mask_ranges': [0., 173.16],
+        'logscale': False,
+        'units': 'K',
+        'coastline_color': 'cyan',
+        'country_color': 'magenta',
+        'meridian_color': 'yellow',
+        'cmap': cm.jet,
+        'n_levels': 256
+    }
     data['temp_gdas'] = dict(data['temp'])
     data['temp_gdas']['name'] = 'GDAS temperature'
 
     data['2temp'] = {
-                'name':'temperature',
-                'quantity':'temperature',
-                'level':True,
-                'discrete':False,
-                'values':[440.,600.],
-                'mask_ranges':[],
-                'logscale':False,
-                'units': 'K',
-                'coastline_color':'cyan',
-                'country_color':'magenta',
-                'meridian_color':'yellow',
-                'cmap':cm.jet,
-                'n_levels':256
-                }
-
+        'name': 'temperature',
+        'quantity': 'temperature',
+        'level': True,
+        'discrete': False,
+        'values': [440., 600.],
+        'mask_ranges': [],
+        'logscale': False,
+        'units': 'K',
+        'coastline_color': 'cyan',
+        'country_color': 'magenta',
+        'meridian_color': 'yellow',
+        'cmap': cm.jet,
+        'n_levels': 256
+    }
 
     data['wvap'] = {
-                'name':'water vapor mixing ratio',
-                'quantity':'water vapor mixing ratio',
-                'level':True,
-                'discrete':False,
-                'values':[0.,2.],
-                'mask_ranges':[],
-                'logscale':False,
-                'units': 'g/kg',
-                'coastline_color':'cyan',
-                'country_color':'magenta',
-                'meridian_color':'yellow',
-                'cmap':cm.jet,
-                'n_levels':256
-                }
+        'name': 'water vapor mixing ratio',
+        'quantity': 'water vapor mixing ratio',
+        'level': True,
+        'discrete': False,
+        'values': [0., 2.],
+        'mask_ranges': [],
+        'logscale': False,
+        'units': 'g/kg',
+        'coastline_color': 'cyan',
+        'country_color': 'magenta',
+        'meridian_color': 'yellow',
+        'cmap': cm.jet,
+        'n_levels': 256
+    }
     data['wvap_gdas'] = dict(data['wvap'])
     data['wvap_gdas']['name'] = 'GDAS water vapor mixing ratio'
 
     data['dwpt'] = {
-                'name':'dewpoint temperature',
-                'quantity':'dewpoint temperature',
-                'level':True,
-                'discrete':False,
-                'values':[170.,280.],
-                'mask_ranges':[],
-                'logscale':False,
-                'units': 'K',
-                'coastline_color':'cyan',
-                'country_color':'magenta',
-                'meridian_color':'yellow',
-                'cmap':cm.jet,
-                'n_levels':256
-                }
+        'name': 'dewpoint temperature',
+        'quantity': 'dewpoint temperature',
+        'level': True,
+        'discrete': False,
+        'values': [170., 280.],
+        'mask_ranges': [],
+        'logscale': False,
+        'units': 'K',
+        'coastline_color': 'cyan',
+        'country_color': 'magenta',
+        'meridian_color': 'yellow',
+        'cmap': cm.jet,
+        'n_levels': 256
+    }
 
     data['relh'] = {
-                'name':'relative humidity',
-                'quantity':'relative humidity',
-                'level':True,
-                'discrete':False,
-                'values':[0.,100.],
-                'mask_ranges':[],
-                'logscale':False,
-                'units': '%',
-                'coastline_color':'cyan',
-                'country_color':'magenta',
-                'meridian_color':'yellow',
-                'cmap':cm.jet,
-                'n_levels':256
-                }
+        'name': 'relative humidity',
+        'quantity': 'relative humidity',
+        'level': True,
+        'discrete': False,
+        'values': [0., 100.],
+        'mask_ranges': [],
+        'logscale': False,
+        'units': '%',
+        'coastline_color': 'cyan',
+        'country_color': 'magenta',
+        'meridian_color': 'yellow',
+        'cmap': cm.jet,
+        'n_levels': 256
+    }
     data['relh_gdas'] = dict(data['relh'])
     data['relh_gdas']['name'] = 'GDAS relative humidity'
 
     data['ctp'] = {
-                'name':'cloud top pressure',
-                'quantity':'cloud top pressure',
-                'level':False,
-                'discrete':False,
-                'values':[0.,1000.],
-                'mask_ranges':[],
-                'logscale':False,
-                'units': 'hPa',
-                'coastline_color':'cyan',
-                'country_color':'magenta',
-                'meridian_color':'yellow',
-                'cmap':cm.jet,
-                'n_levels':256
-                }
+        'name': 'cloud top pressure',
+        'quantity': 'cloud top pressure',
+        'level': False,
+        'discrete': False,
+        'values': [0., 1000.],
+        'mask_ranges': [],
+        'logscale': False,
+        'units': 'hPa',
+        'coastline_color': 'cyan',
+        'country_color': 'magenta',
+        'meridian_color': 'yellow',
+        'cmap': cm.jet,
+        'n_levels': 256
+    }
 
     data['ctt'] = {
-                'name':'cloud top temperature',
-                'quantity':'cloud top temperature',
-                'level':False,
-                'discrete':False,
-                'values':[190.,270.],
-                'mask_ranges':[],
-                'logscale':False,
-                'units': 'K',
-                'coastline_color':'cyan',
-                'country_color':'magenta',
-                'meridian_color':'yellow',
-                'cmap':cm.jet,
-                'n_levels':256
-                }
+        'name': 'cloud top temperature',
+        'quantity': 'cloud top temperature',
+        'level': False,
+        'discrete': False,
+        'values': [190., 270.],
+        'mask_ranges': [],
+        'logscale': False,
+        'units': 'K',
+        'coastline_color': 'cyan',
+        'country_color': 'magenta',
+        'meridian_color': 'yellow',
+        'cmap': cm.jet,
+        'n_levels': 256
+    }
 
     data['unknown'] = {
-                'name':None,
-                'quantity':None,
-                'level':False,
-                'discrete':False,
-                'values':[None,None],
-                'mask_ranges':[],
-                'logscale':False,
-                'units': None,
-                'coastline_color':'cyan',
-                'country_color':'magenta',
-                'meridian_color':'yellow',
-                'cmap':cm.cubehelix,
-                'n_levels':256
-                }
+        'name': None,
+        'quantity': None,
+        'level': False,
+        'discrete': False,
+        'values': [None, None],
+        'mask_ranges': [],
+        'logscale': False,
+        'units': None,
+        'coastline_color': 'cyan',
+        'country_color': 'magenta',
+        'meridian_color': 'yellow',
+        'cmap': cm.cubehelix,
+        'n_levels': 256
+    }
